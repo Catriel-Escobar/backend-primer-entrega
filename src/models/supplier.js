@@ -17,12 +17,6 @@ const supplierSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  products: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
-    },
-  ],
 });
 
 export const Supplier = mongoose.model('Supplier', supplierSchema);

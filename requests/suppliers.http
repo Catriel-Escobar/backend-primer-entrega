@@ -14,8 +14,7 @@ Content-Type: application/json
     "name": "Distribuidora Libros SA",
     "email": "contacto@distribuidora.com",
     "phone": "+54 11 1234-5678",
-    "address": "Av. Corrientes 1234, CABA",
-    "products": ["{{productId}}"]
+    "address": "Av. Corrientes 1234, CABA"
 }
 
 ### Obtener todos los proveedores

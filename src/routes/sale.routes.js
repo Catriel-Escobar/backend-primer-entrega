@@ -13,12 +13,6 @@ router.post(
   validateSchema(saleSchema),
   saleController.create.bind(saleController)
 );
-router.put(
-  '/:id',
-  validateSchema(saleSchema),
-  saleController.update.bind(saleController)
-);
-router.delete('/:id', saleController.delete.bind(saleController));
 
 // Rutas para reportes y estadísticas
 router.get('/reports/by-date', saleController.getByDate.bind(saleController));
