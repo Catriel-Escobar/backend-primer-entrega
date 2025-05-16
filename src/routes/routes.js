@@ -1,14 +1,13 @@
 import express from 'express';
-const route = express.Router();
+import productRoutes from './product.routes.js';
+import saleRoutes from './sale.routes.js';
+import supplierRoutes from './supplier.routes.js';
 
-route.get('/', (req, res) => {
-  const text = 'Este texto es de prueba';
-  const data = [
-    { name: 'Juan', lastname: 'Lopez', age: 20, city: 'Bogota' },
-    { name: 'Pedro', lastname: 'Perez', age: 25, city: 'Medellin' },
-    { name: 'Maria', lastname: 'Gomez', age: 30, city: 'Cali' },
-  ];
-  res.render('prueba', { text, data });
-});
+const router = express.Router();
 
-export default route;
+// Montar las rutas
+router.use('/products', productRoutes);
+router.use('/sales', saleRoutes);
+router.use('/suppliers', supplierRoutes);
+
+export default router;

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container
+    h1.text-center.my-4 Catálogo de Productos
+    
+    .row
+      .col-md-3
+        .list-group
+          a.list-group-item.list-group-item-action.active(href='#') Todas las Categorías
+          a.list-group-item.list-group-item-action(href='?category=libro') Libros
+          a.list-group-item.list-group-item-action(href='?category=revista') Revistas
+          a.list-group-item.list-group-item-action(href='?category=articulo') Artículos
+      
+      .col-md-9
+        .row
+          each product in products
+            .col-md-4.mb-4
+              .card
+                .card-body
+                  h5.card-title= product.name
+                  p.card-text
+                    strong Categoría: 
+                    span= product.category
+                  p.card-text
+                    strong Precio: 
+                    span= `$${product.price}`
+                  p.card-text
+                    strong Stock: 
+                    span= product.stock
+                  if product.description
+                    p.card-text= product.description

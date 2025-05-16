@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Setear las rutas
-app.use('/', route);
+app.use('/api', route);
 
 // Iniciar el servidor
 app.listen(env.PORT, () => {

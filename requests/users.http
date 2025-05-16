@@ -1,0 +1,34 @@
+### Crear un nuevo usuario
+
+@BASE_URL = http://localhost:3050/api
+@userId =
+POST {{BASE_URL}}/users
+Content-Type: application/json
+
+{
+    "name": "Juan",
+    "lastname": "Pérez",
+    "email": "juan@example.com",
+    "password": "contraseña123",
+    "role": "empleado"
+}
+
+### Obtener todos los usuarios
+GET {{BASE_URL}}/users
+
+### Obtener un usuario por ID
+GET {{BASE_URL}}/users/{{userId}}
+
+### Actualizar un usuario
+PUT {{BASE_URL}}/users/{{userId}}
+Content-Type: application/json
+
+{
+    "name": "Juan Actualizado",
+    "lastname": "Pérez",
+    "email": "juan.updated@example.com",
+    "role": "supervisor"
+}
+
+### Eliminar un usuario
+DELETE {{BASE_URL}}/users/{{userId}}

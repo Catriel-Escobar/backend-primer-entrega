@@ -1,0 +1,52 @@
+### Crear una nueva venta
+@BASE_URL = http://localhost:3050/api
+@productId =
+
+@saleId =
+
+POST {{BASE_URL}}/sales
+Content-Type: application/json
+
+{
+    "products": [
+        {
+            "product": "{{productId}}",
+            "quantity": 2,
+            "price": 2500
+        }
+    ],
+    "customer": {
+        "name": "María González",
+        "email": "maria@example.com"
+    }
+}
+
+### Obtener todas las ventas
+GET {{BASE_URL}}/sales
+
+### Obtener una venta por ID
+GET {{BASE_URL}}/sales/{{saleId}}
+
+### Obtener ventas por fecha
+GET {{BASE_URL}}/sales?date=2024-01-20
+
+### Actualizar una venta
+PUT {{BASE_URL}}/sales/{{saleId}}
+Content-Type: application/json
+
+{
+    "products": [
+        {
+            "product": "{{productId}}",
+            "quantity": 3,
+            "price": 2500
+        }
+    ],
+    "customer": {
+        "name": "María González",
+        "email": "maria.updated@example.com"
+    }
+}
+
+### Eliminar una venta
+DELETE {{BASE_URL}}/sales/{{saleId}}

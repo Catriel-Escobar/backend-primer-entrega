@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const productSchema = new mongoose.schema({
+const productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -18,6 +18,11 @@ const productSchema = new mongoose.schema({
   category: {
     type: String,
     enum: ['libro', 'revista', 'articulo'],
+    required: true,
+  },
+  supplier: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Supplier',
     required: true,
   },
 });
