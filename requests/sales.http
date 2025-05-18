@@ -1,8 +1,8 @@
 ### Crear una nueva venta
 @BASE_URL = http://localhost:3050/api
-@productId =
+@productId = 682923573327bdd82d4c01fd
 
-@saleId =
+@saleId = 6829220f3327bdd82d4c01c9
 
 POST {{BASE_URL}}/sales
 Content-Type: application/json
@@ -11,13 +11,13 @@ Content-Type: application/json
     "products": [
         {
             "product": "{{productId}}",
-            "quantity": 2,
-            "price": 2500
+            "quantity": 4,
+            "price": 2.50
         }
     ],
     "customer": {
-        "name": "María González",
-        "email": "maria@example.com"
+        "name": "Gustavo Baranda",
+        "email": "Gustavo@example.com"
     }
 }
 

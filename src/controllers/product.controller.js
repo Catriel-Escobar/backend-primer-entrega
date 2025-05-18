@@ -1,5 +1,7 @@
 import BaseController from './base.controller.js';
 import { Product } from '../models/product.js';
+import { Supplier } from '../models/supplier.js';
+import { Types } from 'mongoose';
 
 /**
  * Controlador para gestionar productos
@@ -7,7 +9,41 @@ import { Product } from '../models/product.js';
  */
 class ProductController extends BaseController {
   constructor() {
-    super(Product);
+    super(Product, ['supplier']);
+  }
+
+  async create(req, res) {
+    try {
+      const { name, description, price, stock, category, supplier } = req.body;
+
+      if (!Types.ObjectId.isValid(supplier)) {
+        return res.status(400).json({ message: 'ID de proveedor inválido' });
+      }
+
+      const supplierFound = await Supplier.findById(supplier);
+
+      if (!supplierFound) {
+        return res.status(404).json({ message: 'Proveedor no encontrado' });
+      }
+      const product = new Product({
+        name,
+        description,
+        price,
+        stock,
+        category,
+        supplier: supplierFound._id,
+      });
+      await product.save();
+      res.status(201).json({
+        message: 'Producto creado correctamente',
+        data: product,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(400)
+        .json({ message: error.message | 'Error al crear el producto' });
+    }
   }
 
   /**

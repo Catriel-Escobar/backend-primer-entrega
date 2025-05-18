@@ -3,8 +3,9 @@
  * @param {mongoose.Model} model - El modelo de Mongoose a utilizar
  */
 class BaseController {
-  constructor(model) {
+  constructor(model, populateFields = []) {
     this.model = model;
+    this.populateFields = populateFields;
   }
 
   /**
@@ -15,7 +16,7 @@ class BaseController {
    */
   async getAll(req, res) {
     try {
-      const items = await this.model.find();
+      const items = await this.model.find().populate(this.populateFields);
       res.status(200).json(items);
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -31,7 +32,9 @@ class BaseController {
    */
   async getById(req, res) {
     try {
-      const item = await this.model.findById(req.params.id);
+      const item = await this.model
+        .findById(req.params.id)
+        .populate(this.populateFields);
       if (!item) {
         return res.status(404).json({ message: 'Item no encontrado' });
       }
@@ -50,10 +53,12 @@ class BaseController {
    */
   async create(req, res) {
     try {
-      console.log(req.body);
       const item = new this.model(req.body);
       const savedItem = await item.save();
-      res.status(201).json(savedItem);
+      const populatedItem = await this.model
+        .findById(savedItem._id)
+        .populate(this.populateFields);
+      res.status(201).json(populatedItem);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -69,10 +74,12 @@ class BaseController {
    */
   async update(req, res) {
     try {
-      const item = await this.model.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true,
-      });
+      const item = await this.model
+        .findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+          runValidators: true,
+        })
+        .populate(this.populateFields);
       if (!item) {
         return res.status(404).json({ message: 'Item no encontrado' });
       }

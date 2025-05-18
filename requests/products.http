@@ -7,20 +7,20 @@ POST {{BASE_URL}}/products
 Content-Type: application/json
 
 {
-    "name": "Midu dev",
+    "name": "La kristi lo iso",
     "price": 2500,
     "description": "Libro clásico de Antoine de Saint-Exupéry",
     "stock": 50,
     "category": "libro",
     "prueba": "prueba",
-    "supplier":"6827bda96e891dd98d8a5674"
+    "supplier":"682923373327bdd82d4c01f9"
 }
 
 ### Obtener todos los productos
 GET {{BASE_URL}}/products
 
 ### Obtener un producto por ID
-GET {{BASE_URL}}/products/6827a020fb2f9a649f1d4be6
+GET {{BASE_URL}}/products/6827bde06e891dd98d8a5676
 
 ### Actualizar un producto
 PUT {{BASE_URL}}/products/{{productId}}

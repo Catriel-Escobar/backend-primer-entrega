@@ -7,7 +7,7 @@ import { Sale } from '../models/sale.js';
  */
 class SaleController extends BaseController {
   constructor() {
-    super(Sale);
+    super(Sale, ['products.product']);
   }
 
   /**
