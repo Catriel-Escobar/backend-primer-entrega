@@ -7,7 +7,7 @@ POST {{BASE_URL}}/products
 Content-Type: application/json
 
 {
-    "name": "La kristi lo iso",
+    "name": "El Principito",
     "price": 2500,
     "description": "Libro clásico de Antoine de Saint-Exupéry",
     "stock": 50,
